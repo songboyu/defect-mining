@@ -1,3 +1,6 @@
 .idea
 *.rdb
 *.log
+*.pyc
+fuzzer/afl/
+binarys/*

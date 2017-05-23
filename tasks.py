@@ -92,6 +92,7 @@ def request_drilling(fzr):
     for input_file in inputs:
         input_data_path = os.path.join(in_dir, input_file)
         input_data = open(input_data_path, "rb").read()
+	l.info("[%s] concolic being requested! %s, %s" % (binary, input_data_path, input_data))
         d_jobs.append(drill.delay(fzr.binary_id, input_data, bitmap_hash, get_fuzzer_id(input_data_path)))
 
     return d_jobs
@@ -172,7 +173,6 @@ def fuzz(binary):
             # check to see if concolic should be invoked
             if 'fuzzer-1' in fzr.stats and 'pending_favs' in fzr.stats['fuzzer-1']:
                 if not int(fzr.stats['fuzzer-1']['pending_favs']) > 0:
-                    l.info("[%s] concolic being requested!", binary)
                     concolic_jobs.extend(request_drilling(fzr))
 
             time.sleep(config.CRASH_CHECK_INTERVAL)
@@ -201,4 +201,4 @@ def fuzz(binary):
         l.info("timed out while fuzzing \"%s\"", binary)
 
     # TODO end drilling jobs working on the binary
-    return fzr.found_crash()
+    return len(fzr.crashes()) > 0

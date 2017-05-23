@@ -10,18 +10,19 @@ pip install cachetools
 pip install bintrees
 pip install simuvex
 
-cd ../..
 pip install cle
 pip install decorator
 pip install angr
 pip install redis
 pip install termcolor
 pip install celery
+pip install shellphish_qemu
 
 cd fuzzer
 wget http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz
 tar -zxvf afl-latest.tgz
-mv afl-2.39b afl
+rm -rf afl-latest.tgz
+mv afl-2.*/ afl
 
 cd afl
 make

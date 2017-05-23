@@ -223,7 +223,7 @@ class Fuzzer(object):
 
     def found_crash(self):
 
-        return len(self.crashes()) > 0
+        return len(self._get_crashing_inputs([signal.SIGSEGV, signal.SIGILL], False)) > 0
 
     def add_fuzzer(self):
         '''
@@ -288,7 +288,7 @@ class Fuzzer(object):
         for _ in range(n):
             self.remove_fuzzer()
 
-    def _get_crashing_inputs(self, signals):
+    def _get_crashing_inputs(self, signals, ls_crashs):
         """
         Retrieve the crashes discovered by AFL. Only return those crashes which
         recieved a signal within 'signals' as the kill signal.
@@ -317,6 +317,8 @@ class Fuzzer(object):
 
                 crash_path = os.path.join(crashes_dir, crash)
                 with open(crash_path, 'rb') as f:
+		    if ls_crashs:
+		        l.info("find crash file: %s,  %s" % (crash_path,f.read()))
                     crashes.add(f.read())
 
         return list(crashes)
@@ -329,7 +331,7 @@ class Fuzzer(object):
         :return: a list of strings which are crashing inputs
         """
 
-        return self._get_crashing_inputs([signal.SIGSEGV, signal.SIGILL])
+        return self._get_crashing_inputs([signal.SIGSEGV, signal.SIGILL], True)
 
     def queue(self, fuzzer='fuzzer-master'):
         '''

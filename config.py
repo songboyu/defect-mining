@@ -1,5 +1,5 @@
 ### Redis Options
-REDIS_HOST = "192.168.0.103"
+REDIS_HOST = "127.0.0.1"
 REDIS_PORT = 6379
 REDIS_DB = 0
 
