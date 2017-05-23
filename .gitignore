@@ -1,7 +1,10 @@
 .idea
 *.rdb
 *.pyc
+
 fuzzer/afl/
+bak/
+
 log/*
 output/*
 binarys/*

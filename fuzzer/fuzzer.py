@@ -319,7 +319,7 @@ class Fuzzer(object):
                 crash_path = os.path.join(crashes_dir, crash)
                 with open(crash_path, 'rb') as f:
 		    if ls_crashs:
-		        l.info("find crash file: %s,  %s" % (crash_path,f.read()))
+		        l.info("find crash file: %s" % (crash_path))
                     crashes.add(f.read())
 
         return list(crashes)
