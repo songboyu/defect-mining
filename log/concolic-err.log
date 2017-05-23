@@ -1,0 +1,12 @@
+/usr/local/lib/python2.7/dist-packages/celery/platforms.py:793: RuntimeWarning: You're running the worker with superuser privileges: this is
+absolutely not recommended!
+
+Please specify a different user using the -u option.
+
+User information: uid=0 euid=0 gid=0 egid=0
+
+  uid=uid, euid=euid, gid=gid, egid=egid,
+[2017-05-23 00:32:50,252: INFO/MainProcess] [32mConnected to redis://127.0.0.1:6379//[0m
+[2017-05-23 00:32:50,261: INFO/MainProcess] [32mmingle: searching for neighbors[0m
+[2017-05-23 00:32:51,279: INFO/MainProcess] [32mmingle: all alone[0m
+[2017-05-23 00:32:51,288: INFO/MainProcess] [31mcelery@concolic.bgp1 ready.[0m

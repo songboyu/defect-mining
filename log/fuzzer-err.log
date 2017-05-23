@@ -1,0 +1,53 @@
+/usr/local/lib/python2.7/dist-packages/celery/platforms.py:793: RuntimeWarning: You're running the worker with superuser privileges: this is
+absolutely not recommended!
+
+Please specify a different user using the -u option.
+
+User information: uid=0 euid=0 gid=0 egid=0
+
+  uid=uid, euid=euid, gid=gid, egid=egid,
+[2017-05-23 00:32:50,027: INFO/MainProcess] [32mConnected to redis://127.0.0.1:6379//[0m
+[2017-05-23 00:32:50,036: INFO/MainProcess] [32mmingle: searching for neighbors[0m
+[2017-05-23 00:32:51,057: INFO/MainProcess] [32mmingle: all alone[0m
+[2017-05-23 00:32:51,065: INFO/MainProcess] [31mcelery@fuzzer.bgp1 ready.[0m
+[2017-05-23 00:32:52,979: INFO/MainProcess] [33mReceived task: tasks.fuzz[5df6070b-2ff2-4c2c-a48a-dfa9056fc18e]  [0m
+[2017-05-23 00:32:52,982: INFO/PoolWorker-1] [32mbeginning to fuzz "test_0"[0m
+[2017-05-23 00:32:52,983: WARNING/PoolWorker-1] [32munable to find pcap file, will seed fuzzer with the default[0m
+[2017-05-23 00:32:52,983: INFO/PoolWorker-1] [37mLoading binary binarys/test_0[0m
+[2017-05-23 00:32:53,039: INFO/PoolWorker-1] [33m[Rebasing /home/hitns/zyl/lyd/defect-mining/binarys/test_0 @0x0][0m
+[2017-05-23 00:32:53,427: INFO/PoolWorker-1] [33m[Rebasing /lib/x86_64-linux-gnu/libc-2.23.so @0x1000000][0m
+[2017-05-23 00:32:53,453: INFO/PoolWorker-1] [33m[Rebasing /lib/x86_64-linux-gnu/ld-2.23.so @0x2000000][0m
+[2017-05-23 00:32:53,454: INFO/PoolWorker-1] [33m[Rebasing ##cle_tls## @0x3000000][0m
+[2017-05-23 00:32:53,587: INFO/PoolWorker-1] [33m[Rebasing ##angr_externs## @0x4000000][0m
+[2017-05-23 00:32:53,587: INFO/PoolWorker-1] [33m[Rebasing ##angr_externs## @0x5000000][0m
+[2017-05-23 00:32:53,593: INFO/PoolWorker-1] [37mProviding read from libc.so.6 with SimProcedure[0m
+[2017-05-23 00:32:53,594: INFO/PoolWorker-1] [37mProviding __stack_chk_fail from libc.so.6 with SimProcedure[0m
+[2017-05-23 00:32:53,594: INFO/PoolWorker-1] [37mProviding write from libc.so.6 with SimProcedure[0m
+[2017-05-23 00:32:53,594: INFO/PoolWorker-1] [37mProviding atoi from libc.so.6 with SimProcedure[0m
+[2017-05-23 00:32:53,594: INFO/PoolWorker-1] [37mProviding __libc_start_main from libc.so.6 with SimProcedure[0m
+[2017-05-23 00:32:53,594: INFO/PoolWorker-1] [37mProviding __isoc99_scanf from libc.so.6 with SimProcedure[0m
+[2017-05-23 00:32:53,594: INFO/PoolWorker-1] [37mProviding close from libc.so.6 with SimProcedure[0m
+[2017-05-23 00:32:53,594: INFO/PoolWorker-1] [37mProviding __tls_get_addr from ld-linux-x86-64.so.2 with SimProcedure[0m
+[2017-05-23 00:32:53,708: INFO/PoolWorker-1] [33mCallstack on the path is unbalanced.[0m
+[2017-05-23 00:32:53,711: INFO/PoolWorker-1] [35mA factory.call_state-created path returned![0m
+[2017-05-23 00:32:53,878: INFO/PoolWorker-1] [33mCallstack on the path is unbalanced.[0m
+[2017-05-23 00:32:53,881: INFO/PoolWorker-1] [35mA factory.call_state-created path returned![0m
+[2017-05-23 00:32:53,930: INFO/PoolWorker-1] [33mCallstack on the path is unbalanced.[0m
+[2017-05-23 00:32:53,932: INFO/PoolWorker-1] [35mA factory.call_state-created path returned![0m
+[2017-05-23 00:32:54,019: INFO/PoolWorker-1] [33mCallstack on the path is unbalanced.[0m
+[2017-05-23 00:32:54,021: INFO/PoolWorker-1] [35mA factory.call_state-created path returned![0m
+[2017-05-23 00:32:54,073: INFO/PoolWorker-1] [33mCallstack on the path is unbalanced.[0m
+[2017-05-23 00:32:54,075: INFO/PoolWorker-1] [35mA factory.call_state-created path returned![0m
+[2017-05-23 00:32:54,126: INFO/PoolWorker-1] [33mCallstack on the path is unbalanced.[0m
+[2017-05-23 00:32:54,128: INFO/PoolWorker-1] [35mA factory.call_state-created path returned![0m
+[2017-05-23 00:32:54,278: INFO/PoolWorker-1] [33mCallstack on the path is unbalanced.[0m
+[2017-05-23 00:32:54,281: INFO/PoolWorker-1] [35mA factory.call_state-created path returned![0m
+[2017-05-23 00:32:54,359: INFO/PoolWorker-1] [33mCallstack on the path is unbalanced.[0m
+[2017-05-23 00:32:54,361: INFO/PoolWorker-1] [35mA factory.call_state-created path returned![0m
+[2017-05-23 00:32:54,366: WARNING/PoolWorker-1] [36marchitecture "x86_64" has no installed libraries[0m
+[2017-05-23 00:32:54,367: INFO/PoolWorker-1] [36m/home/hitns/zyl/lyd/defect-mining/fuzzer/afl/afl-fuzz -i output/test_0/input -o output/test_0/sync -m 8G -M fuzzer-master -- binarys/test_0[0m
+[2017-05-23 00:32:54,373: INFO/PoolWorker-1] [36m/home/hitns/zyl/lyd/defect-mining/fuzzer/afl/afl-fuzz -i output/test_0/input -o output/test_0/sync -m 8G -S fuzzer-1 -- binarys/test_0[0m
+[2017-05-23 00:32:54,379: INFO/PoolWorker-1] [36m/home/hitns/zyl/lyd/defect-mining/fuzzer/afl/afl-fuzz -i output/test_0/input -o output/test_0/sync -m 8G -S fuzzer-2 -- binarys/test_0[0m
+[2017-05-23 00:33:56,441: INFO/PoolWorker-1] [32mfound crash for "test_0"[0m
+[2017-05-23 00:33:56,441: INFO/PoolWorker-1] [36mfind crash file: output/test_0/sync/fuzzer-master/crashes/id:000000,sig:11,src:000002,op:havoc,rep:2,  bad![0m
+[2017-05-23 00:33:56,443: INFO/PoolWorker-1] [34mTask tasks.fuzz[5df6070b-2ff2-4c2c-a48a-dfa9056fc18e] succeeded in 63.461926516s: True[0m
