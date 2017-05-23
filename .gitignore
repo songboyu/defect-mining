@@ -2,3 +2,6 @@
 *.rdb
 *.pyc
 fuzzer/afl/
+log/*
+output/*
+binarys/*
