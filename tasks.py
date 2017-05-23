@@ -92,7 +92,7 @@ def request_drilling(fzr):
     for input_file in inputs:
         input_data_path = os.path.join(in_dir, input_file)
         input_data = open(input_data_path, "rb").read()
-	l.info("[%s] concolic being requested! %s, %s" % (binary, input_data_path, input_data))
+	l.info("[%s] concolic being requested! %s, %s" % (fzr.binary_path, input_data_path, input_data))
         d_jobs.append(drill.delay(fzr.binary_id, input_data, bitmap_hash, get_fuzzer_id(input_data_path)))
 
     return d_jobs
@@ -142,7 +142,7 @@ def fuzz(binary):
 
     binary_path = os.path.join(config.BINARY_DIR, binary)
 
-    seeds = ["fuzz"]
+    seeds = ["111111111111"]
     # look for a pcap
     pcap_path = os.path.join(config.PCAP_DIR, "%s.pcap" % binary)
     if os.path.isfile(pcap_path):

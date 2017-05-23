@@ -100,6 +100,9 @@ class Concolic(object):
 
         list(self._drill_input())
 
+        for g in self._generated:
+            l.info(g)
+
         if self.redis:
             return len(self._generated)
         else:
@@ -124,7 +127,7 @@ class Concolic(object):
         '''
 
         # initialize the tracer
-        t = Tracer(self.binary, self.input, hooks=self._hooks)
+        t = Tracer(self.binary, self.input, max_size=50, hooks=self._hooks)
 
         self._set_concretizations(t)
         self._set_simproc_limits(t)

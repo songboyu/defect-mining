@@ -2,17 +2,12 @@
 #include <stdlib.h>
 #include <signal.h>
 
-void test (char *buf) {
-    if(strcmp(buf, "songboyu") == 0) {
-        raise(SIGSEGV);
-    }
-}
-
 int main()
 {
-    char buf[5];
-    scanf("%8c", &buf);
-
-    test(buf);
+    int x;
+    scanf("%d", &x);
+    if(x == 561237896){
+    	raise(SIGSEGV);
+    }
     return 0;
 }

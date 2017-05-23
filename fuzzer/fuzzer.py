@@ -10,6 +10,7 @@ import afl_wrapper
 import logging
 
 l = logging.getLogger("fuzzer.fuzzer")
+l.setLevel("DEBUG")
 
 config = {}
 
@@ -472,7 +473,6 @@ class Fuzzer(object):
         self.fuzz_id += 1
 
         outfile = os.path.join(self.job_dir, outfile)
-        l.info(" ".join(args))
         with open(outfile, "w") as fp:
             return subprocess.Popen(args, stdout=fp, close_fds=True)
 
