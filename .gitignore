@@ -2,5 +2,7 @@
 *.rdb
 *.log
 *.pyc
+log/*
+output/*
 fuzzer/afl/
 binarys/*
