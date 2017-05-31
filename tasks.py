@@ -7,12 +7,16 @@ import traceback
 
 import redis
 from celery import Celery
+import torndb
 
+from web.settings import *
 import config
 from fuzzer import Fuzzer, InstallError
 from concolic import Concolic, pcap
 
 l = logging.getLogger("mining.tasks")
+
+db = torndb.Connection(db_server, db_database, db_username, db_password)
 
 redis_url = "redis://%s:%d" % (config.REDIS_HOST, config.REDIS_PORT)
 app = Celery('tasks', broker=redis_url, backend=redis_url)
@@ -189,6 +193,9 @@ def fuzz(binary):
     if fzr.found_crash():
         l.info("found crash for \"%s\"", binary)
 
+        sql = 'update binarys SET status=3 WHERE binary_name = %s' % binary
+        db.execute(sql)
+
         # publish the crash
         redis_inst = redis.Redis(host=config.REDIS_HOST, port=config.REDIS_PORT, db=config.REDIS_DB)
         redis_inst.publish("crashes", binary)
@@ -200,6 +207,10 @@ def fuzz(binary):
 
     if fzr.timed_out():
         l.info("timed out while fuzzing \"%s\"", binary)
+
+        sql = 'update binarys SET status=-1 WHERE binary_name = %s' % binary
+        db.execute(sql)
+
 
     # TODO end drilling jobs working on the binary
     return len(fzr.crashes()) > 0

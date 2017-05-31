@@ -50,12 +50,11 @@ def fuzzer_node(n, outfile, errfile):
         with open(errfile, "w") as e:
             subprocess.Popen(args, stdout=o, stderr=e)
 
-def main(argv):
-
+def main():
     if config.concolic_WORKERS:
         concolic_node(config.concolic_WORKERS, "log/concolic-out.log", "log/concolic-err.log")
     if config.FUZZER_WORKERS:
         fuzzer_node(config.FUZZER_WORKERS, "log/fuzzer-out.log", "log/fuzzer-err.log")
 
 if __name__ == "__main__":
-    sys.exit(main(sys.argv))
+    sys.exit(main())
