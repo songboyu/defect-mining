@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>二进制列表</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<link href="/static/stylesheets/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="/static/stylesheets/pixel-admin.min.css" rel="stylesheet" type="text/css">
+	<link href="/static/stylesheets/widgets.min.css" rel="stylesheet" type="text/css">
+	<link href="/static/stylesheets/rtl.min.css" rel="stylesheet" type="text/css">
+	<link href="/static/stylesheets/themes.min.css" rel="stylesheet" type="text/css">
+
+    <link rel="shortcut icon" href="/static/favicon.ico"/>
+	<!--[if lt IE 9]>
+		<script src="/static/javascripts/ie.min.js"></script>
+	<![endif]-->
+    <style>
+        .center{
+            text-align: center;
+            vertical-align: middle;
+        }
+        .output{
+            overflow-y: auto;
+            margin-top: 10px;
+            width: 100%;
+            height: 200px;
+            font-family: monospace;
+            /*padding: 0px;*/
+            /*background: #333333;*/
+            color: #333333;
+            border: 1px solid #555;
+        }
+        .modal-alert .modal-dialog{
+            width: 500px;
+        }
+	</style>
+</head>
+<body class="theme-silver main-menu-animated main-navbar-fixed main-menu-fixed">
+
+<script>var init = [];</script>
+<!-- Demo script  <script src="/static/demo/demo.js"></script>  / Demo script -->
+
+<div id="main-wrapper">
+
+
+<!-- 2. $MAIN_NAVIGATION ===========================================================================
+
+	Main navigation
+-->
+	<div id="main-navbar" class="navbar navbar-inverse" role="navigation">
+		<!-- Main menu toggle -->
+		<button type="button" id="main-menu-toggle"><i class="navbar-icon fa fa-bars icon"></i><span class="hide-menu-text">HIDE MENU</span></button>
+		
+		<div class="navbar-inner">
+			<!-- Main navbar header -->
+			<div class="navbar-header">
+
+				<!-- Logo -->
+				<a href="index.html" class="navbar-brand">
+					<div><img alt="Pixel Admin" src="/static/images/pixel-admin/main-navbar-logo.png"></div>
+					PixelAdmin
+				</a>
+
+				<!-- Main navbar toggle -->
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse"><i class="navbar-icon fa fa-bars"></i></button>
+
+			</div> <!-- / .navbar-header -->
+
+			<div id="main-navbar-collapse" class="collapse navbar-collapse main-navbar-collapse">
+				<div>
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="#">Home</a>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">First item</a></li>
+								<li><a href="#">Second item</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Third item</a></li>
+							</ul>
+						</li>
+					</ul> <!-- / .navbar-nav -->
+
+					<div class="right clearfix">
+						<ul class="nav navbar-nav pull-right right-navbar-nav">
+							<li>
+								<form class="navbar-form pull-left">
+									<input type="text" class="form-control" placeholder="Search">
+								</form>
+							</li>
+
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown">
+									<img src="/static/images/pixel-admin/avatar.jpg">
+									<span>defect</span>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="#"><span class="label label-warning pull-right">New</span>Profile</a></li>
+									<li><a href="#"><span class="badge badge-primary pull-right">New</span>Account</a></li>
+									<li><a href="#"><i class="dropdown-icon fa fa-cog"></i>&nbsp;&nbsp;Settings</a></li>
+									<li class="divider"></li>
+									<li><a href="/signin"><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>
+								</ul>
+							</li>
+						</ul> <!-- / .navbar-nav -->
+					</div> <!-- / .right -->
+				</div>
+			</div> <!-- / #main-navbar-collapse -->
+		</div> <!-- / .navbar-inner -->
+	</div> <!-- / #main-navbar -->
+<!-- /2. $END_MAIN_NAVIGATION -->
+
+
+<!-- 4. $MAIN_MENU =================================================================================
+
+		Main menu
+		
+		Notes:
+		* to make the menu item active, add a class 'active' to the <li>
+		  example: <li class="active">...</li>
+		* multilevel submenu example:
+			<li class="mm-dropdown">
+			  <a href="#"><span class="mm-text">Submenu item text 1</span></a>
+			  <ul>
+				<li>...</li>
+				<li class="mm-dropdown">
+				  <a href="#"><span class="mm-text">Submenu item text 2</span></a>
+				  <ul>
+					<li>...</li>
+					...
+				  </ul>
+				</li>
+				...
+			  </ul>
+			</li>
+-->
+	<div id="main-menu" role="navigation">
+		<div id="main-menu-inner">
+			<div class="menu-content top" id="menu-content-demo">
+				<div>
+					<div class="text-bg"><span class="text-slim">Welcome,</span> <span class="text-semibold">defect</span></div>
+
+					<img src="/static/images/pixel-admin/avatar.jpg" alt="" class="">
+					<div class="btn-group">
+						<a href="#" class="btn btn-xs btn-primary btn-outline dark"><i class="fa fa-envelope"></i></a>
+						<a href="#" class="btn btn-xs btn-primary btn-outline dark"><i class="fa fa-user"></i></a>
+						<a href="#" class="btn btn-xs btn-primary btn-outline dark"><i class="fa fa-cog"></i></a>
+						<a href="#" class="btn btn-xs btn-danger btn-outline dark"><i class="fa fa-power-off"></i></a>
+					</div>
+					<a href="#" class="close">&times;</a>
+				</div>
+			</div>
+			<ul class="navigation">
+				<li>
+					<a href="index.html"><i class="menu-icon fa fa-dashboard"></i><span class="mm-text">Dashboard</span></a>
+				</li>
+				<li>
+					<a href="/mining/binarys"><i class="menu-icon fa fa-th"></i><span class="mm-text">二进制列表</span></a>
+				</li>
+                <li>
+					<a href="/mining/logs"><i class="menu-icon fa fa-tasks"></i><span class="mm-text">日志输出</span></a>
+				</li>
+				<li>
+					<a href="widgets.html"><i class="menu-icon fa fa-flask"></i><span class="mm-text">Widgets</span></a>
+				</li>
+				<li class="mm-dropdown">
+					<a href="#"><i class="menu-icon fa fa-desktop"></i><span class="mm-text">UI elements</span></a>
+					<ul>
+						<li>
+							<a tabindex="-1" href="ui-buttons.html"><span class="mm-text">Buttons</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="ui-typography.html"><span class="mm-text">Typography</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="ui-tabs.html"><span class="mm-text">Tabs &amp; Accordions</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="ui-modals.html"><span class="mm-text">Modals</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="ui-alerts.html"><span class="mm-text">Alerts &amp; Tooltips</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="ui-components.html"><span class="mm-text">Components</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="ui-panels.html"><span class="mm-text">Panels</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="ui-jqueryui.html"><span class="mm-text">jQuery UI</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="ui-icons.html"><span class="mm-text">Icons</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="ui-utility-classes.html"><span class="mm-text">Utility classes</span></a>
+						</li>
+					</ul>
+				</li>
+				<li class="mm-dropdown">
+					<a href="#"><i class="menu-icon fa fa-check-square"></i><span class="mm-text">Form components</span></a>
+					<ul>
+						<li>
+							<a tabindex="-1" href="forms-layouts.html"><span class="mm-text">Layouts</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="forms-general.html"><span class="mm-text">General</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="forms-advanced.html"><span class="mm-text">Advanced</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="forms-pickers.html"><span class="mm-text">Pickers</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="forms-validation.html"><span class="mm-text">Validation</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="forms-editors.html"><span class="mm-text">Editors</span></a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="tables.html"><i class="menu-icon fa fa-table"></i><span class="mm-text">Tables</span></a>
+				</li>
+				<li>
+					<a href="charts.html"><i class="menu-icon fa fa-bar-chart-o"></i><span class="mm-text">Charts</span></a>
+				</li>
+				<li class="mm-dropdown">
+					<a href="#"><i class="menu-icon fa fa-files-o"></i><span class="mm-text">Pages</span><span class="label label-success">16</span></a>
+					<ul>
+						<li>
+							<a tabindex="-1" href="pages-search.html"><span class="mm-text">Search results</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="pages-pricing.html"><span class="mm-text">Plans &amp; pricing</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="pages-faq.html"><span class="mm-text">FAQ</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="pages-profile.html"><span class="mm-text">Profile</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="pages-timeline.html"><span class="mm-text">Timeline</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="pages-signin.html"><span class="mm-text">Sign In</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="pages-signup.html"><span class="mm-text">Sign Up</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="pages-signin-alt.html"><span class="mm-text">Sign In Alt</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="pages-signup-alt.html"><span class="mm-text">Sign Up Alt</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="pages-invoice.html"><span class="mm-text">Invoice</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="pages-404.html"><span class="mm-text">Error 404</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="pages-500.html"><span class="mm-text">Error 500</span></a>
+						</li>
+						<li class="mm-dropdown">
+							<a href="#"><i class="menu-icon fa fa-envelope"></i><span class="mm-text">Messages</span></a>
+							<ul>
+								<li>
+									<a tabindex="-1" href="pages-inbox.html"><span class="mm-text">Inbox</span></a>
+								</li>
+								<li>
+									<a tabindex="-1" href="pages-show-email.html"><span class="mm-text">Show message</span></a>
+								</li>
+								<li>
+									<a tabindex="-1" href="pages-new-email.html"><span class="mm-text">New message</span></a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a tabindex="-1" href="pages-blank.html"><span class="mm-text">Blank page</span></a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="complete-ui.html"><i class="menu-icon fa fa-briefcase"></i><span class="mm-text">Complete UI</span></a>
+				</li>
+				<li>
+					<a href="color-builder.html"><i class="menu-icon fa fa-tint"></i><span class="mm-text">Color Builder</span></a>
+				</li>
+				<li class="mm-dropdown">
+					<a href="#"><i class="menu-icon fa fa-sitemap"></i><span class="mm-text">Menu levels</span><span class="badge badge-primary">6</span></a>
+					<ul>
+						<li>
+							<a tabindex="-1" href="#"><span class="mm-text">Menu level 1.1</span><span class="badge badge-danger">12</span><span class="label label-info">21</span></a>
+						</li>
+						<li>
+							<a tabindex="-1" href="#"><span class="mm-text">Menu level 1.2</span></a>
+						</li>
+						<li class="mm-dropdown">
+							<a tabindex="-1" href="#"><span class="mm-text">Menu level 1.3</span><span class="label label-warning">5</span></a>
+							<ul>
+								<li>
+									<a tabindex="-1" href="#"><span class="mm-text">Menu level 2.1</span></a>
+								</li>
+								<li class="mm-dropdown">
+									<a tabindex="-1" href="#"><span class="mm-text">Menu level 2.2</span></a>
+									<ul>
+										<li class="mm-dropdown">
+											<a tabindex="-1" href="#"><span class="mm-text">Menu level 3.1</span></a>
+											<ul>
+												<li>
+													<a tabindex="-1" href="#"><span class="mm-text">Menu level 4.1</span></a>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<a tabindex="-1" href="#"><span class="mm-text">Menu level 3.2</span></a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a tabindex="-1" href="#"><span class="mm-text">Menu level 2.2</span></a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul> <!-- / .navigation -->
+			<div class="menu-content">
+				<a href="pages-invoice.html" class="btn btn-primary btn-block btn-outline dark">Create Invoice</a>
+			</div>
+		</div> <!-- / #main-menu-inner -->
+	</div> <!-- / #main-menu -->
+<!-- /4. $MAIN_MENU -->
+
+
+	<div id="content-wrapper">
+        <!-- 14. $DROPZONEJS_FILE_UPLOADS ==================================================================
+
+				Dropzone.js file uploads
+        -->
+				<!-- Javascript -->
+				<script>
+
+                    var table;
+					init.push(function () {
+						$("#dropzonejs-example").dropzone({
+							url: "/mining/binary_upload",
+							paramName: "file", // The name that will be used to transfer the file
+							maxFilesize: 10, // MB
+
+							addRemoveLinks : true,
+							dictResponseError: "文件已存在!",
+							autoProcessQueue: true,
+							thumbnailWidth: 138,
+							thumbnailHeight: 120,
+
+							previewTemplate: '<div class="dz-preview dz-file-preview"><div class="dz-details"><div class="dz-filename"><span data-dz-name></span></div><div class="dz-size">File size: <span data-dz-size></span></div><div class="dz-thumbnail-wrapper"><div class="dz-thumbnail"><img data-dz-thumbnail><span class="dz-nopreview">No preview</span><div class="dz-success-mark"><i class="fa fa-check-circle-o"></i></div><div class="dz-error-mark"><i class="fa fa-times-circle-o"></i></div><div class="dz-error-message"><span data-dz-errormessage></span></div></div></div></div><div class="progress progress-striped active"><div class="progress-bar progress-bar-success" data-dz-uploadprogress></div></div></div>',
+
+							resize: function(file) {
+								var info = { srcX: 0, srcY: 0, srcWidth: file.width, srcHeight: file.height },
+									srcRatio = file.width / file.height;
+								if (file.height > this.options.thumbnailHeight || file.width > this.options.thumbnailWidth) {
+									info.trgHeight = this.options.thumbnailHeight;
+									info.trgWidth = info.trgHeight * srcRatio;
+									if (info.trgWidth > this.options.thumbnailWidth) {
+										info.trgWidth = this.options.thumbnailWidth;
+										info.trgHeight = info.trgWidth / srcRatio;
+									}
+								} else {
+									info.trgHeight = file.height;
+									info.trgWidth = file.width;
+								}
+								return info;
+							},
+                            success: function(file) {
+                                file.previewElement.classList.add("dz-success");
+                                table.ajax.reload(null, false);
+                            }
+						});
+					});
+				</script>
+				<!-- / Javascript -->
+
+				<div class="panel">
+					<div class="panel-heading">
+						<span class="panel-title">二进制文件上传</span>
+					</div>
+					<div class="panel-body">
+						<div id="dropzonejs-example" class="dropzone-box" style="min-height: 150px">
+							<div class="dz-default dz-message">
+								<i class="fa fa-cloud-upload"></i>
+								Drop files in here<br><span class="dz-text-small">or click to pick manually</span>
+							</div>
+							<form>
+								<div class="fallback">
+									<input name="file" type="file" multiple="" />
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+<!-- /14. $DROPZONEJS_FILE_UPLOADS -->
+<!-- 11. $JQUERY_DATA_TABLES ===========================================================================
+
+				jQuery Data Tables
+-->
+				<!-- Javascript -->
+				<script>
+                    var api_url = "/mining/binarys_data";
+                    function delete_binary(id){
+                        bootbox.confirm({
+                            message: "确定删除此文件吗?",
+                            className: "bootbox-sm",
+                            callback: function(result) {
+                                if(result == true){
+                                    $.post("/mining/binary_delete", {
+                                        'id': id
+                                    }, function (data) {
+                                        table.ajax.reload(null, false);
+                                    });
+                                }
+                            }
+                        });
+                    }
+                    function start_mining(id){
+                        $.post("/mining/binary_start", {
+                            'id': id
+                        }, function (data) {
+                            table.ajax.reload(null, false);
+                        });
+                    }
+                    function crash_file(id){
+                        $.post("/mining/crash_file", {
+                            'id': id
+                        }, function (data) {
+                            $("#output1").html(data);
+                        });
+                    }
+					init.push(function () {
+                        table = $('#jq-datatables-example').DataTable({
+                            "pageLength": 25,
+                            "ajax":{
+                                "url": api_url,
+                                "dataSrc": "binarys"
+                            },
+                            "columns": [
+                                { "className": "center", "data": "id" },
+                                { "className": "center", "data": "binary_name" },
+                                { "className": "center" },
+                                { "className": "center" },
+                                { "className": "center", "data": "upload_datetime" },
+                                { "className": "center", "data": "update_datetime" },
+                                { "className": "center" },
+                                { "className": "center" },
+                                { "className": "center" },
+                            ],
+                            "columnDefs": [
+                                {
+                                    "render": function ( data, type, row ) {
+                                        return row.file_size + " KB"
+                                    },
+                                    "targets": [2]
+                                },
+                                {
+                                    "render": function ( data, type, row ) {
+                                        if(row.status == 0){
+											return '<a href="#" class="label">任务未执行</a>';
+										}else if(row.status == 1){
+											return '<a href="#" class="label label-primary">模糊器执行中</a>';
+										}else if(row.status == 2){
+											return '<a href="#" class="label label-warning">符号执行执行中</a>';
+										}else if(row.status == 3){
+											return '<a href="#" class="label label-success">任务结束,找到崩溃</a>';
+										}else if(row.status == -1){
+											return '<a href="#" class="label label-danger">任务结束,未找到崩溃</a>';
+										}
+                                    },
+                                    "targets": [3]
+                                },
+                                {
+                                    "render": function ( data, type, row ) {
+                                        if(row.status == 0) {
+                                            return '<button onclick="start_mining(\''+ row.id +'\');" data-toggle="modal" data-target="#start-mining-modals" class="btn btn-labeled btn-success"><span class="btn-label icon fa fa-toggle-right"></span>开始执行</button>';
+                                        } else if(row.status == 3 || row.status == -1){
+                                            return '<button class="btn btn-labeled disabled"><span class="btn-label icon fa fa-check-square-o"></span>任务完成</button>';
+                                        } else {
+                                            return '<button class="btn btn-labeled disabled"><span class="btn-label icon fa fa-lock"></span>正在执行</button>';
+                                        }
+                                    },
+                                    "targets": [6]
+
+                                },
+                                {
+                                    "render": function ( data, type, row ) {
+                                        return '<button onclick="delete_binary(\''+ row.id +'\');" class="btn btn-labeled btn-danger"><span class="btn-label icon fa fa-ban"></span>删除</button>';
+                                    },
+                                    "targets": [7]
+
+                                },
+                                {
+                                    "render": function ( data, type, row ) {
+                                        if(row.status == 3) {
+                                            return '<button onclick="crash_file(\''+ row.id +'\');" class="btn btn-labeled btn-success btn-de" data-toggle="modal" data-target="#crash-content-modals"><span class="btn-label icon fa fa-globe"></span>查看</button>';
+                                        } else {
+                                            return '<button class="btn btn-labeled disabled"><span class="btn-label icon fa fa-lock"></span>查看</button>';
+                                        }
+
+                                    },
+                                    "targets": [8]
+
+                                }
+                            ]
+                        });
+
+                        setInterval( function () {
+                            table.ajax.reload(null, false);
+                        }, 2000 );
+
+						$('#jq-datatables-example_wrapper .table-caption').text('二进制文件列表');
+						$('#jq-datatables-example_wrapper .dataTables_filter input').attr('placeholder', 'Search...');
+
+					});
+				</script>
+
+                <!-- Success -->
+				<div id="start-mining-modals" class="modal modal-alert modal-info fade">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<i class="fa fa-check-circle"></i>
+							</div>
+							<div class="modal-title">提示</div>
+							<div class="modal-body">二进制文件开始漏洞挖掘</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+							</div>
+						</div> <!-- / .modal-content -->
+					</div> <!-- / .modal-dialog -->
+				</div> <!-- / .modal -->
+				<!-- / Success -->
+
+                <!-- Success -->
+				<div id="crash-content-modals" class="modal modal-alert modal-success fade">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<i class="fa fa-check-circle"></i>
+							</div>
+							<div class="modal-title">崩溃文件内容</div>
+							<div class="modal-body"><div id="output1" class="panel-body output"></div></div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+							</div>
+						</div> <!-- / .modal-content -->
+					</div> <!-- / .modal-dialog -->
+				</div> <!-- / .modal -->
+				<!-- / Success -->
+
+				<!-- / Javascript -->
+				<div class="panel">
+					<div class="panel-heading">
+						<span class="panel-title"></span>
+					</div>
+					<div class="panel-body">
+						<div class="table-primary">
+							<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="jq-datatables-example">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>二进制名</th>
+										<th>文件大小</th>
+                                        <th>执行状态</th>
+                                        <th>上传时间</th>
+                                        <th>状态变更时间</th>
+                                        <th>操作</th>
+                                        <th>崩溃</th>
+                                        <th>删除</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+<!-- /11. $JQUERY_DATA_TABLES -->
+
+			</div>
+		</div>
+
+	</div> <!-- / #content-wrapper -->
+	<div id="main-menu-bg"></div>
+</div> <!-- / #main-wrapper -->
+
+<!-- Get jQuery from Google CDN -->
+<!--[if !IE]> -->
+	<script type="text/javascript"> window.jQuery || document.write('<script src="/static/javascripts/jquery-1.8.3.min.js">'+"<"+"/script>"); </script>
+<!-- <![endif]-->
+<!--[if lte IE 9]>
+	<script type="text/javascript"> window.jQuery || document.write('<script src="/static/javascripts/jquery-1.8.3.min.js">'+"<"+"/script>"); </script>
+<![endif]-->
+
+
+<!-- Pixel Admin's javascripts -->
+<script src="/static/javascripts/bootstrap.min.js"></script>
+<script src="/static/javascripts/pixel-admin.min.js"></script>
+
+<script type="text/javascript">
+	init.push(function () {
+		// Javascript code here
+	})
+	window.PixelAdmin.start(init);
+</script>
+
+</body>
+</html>
