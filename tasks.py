@@ -193,7 +193,8 @@ def fuzz(binary):
     if fzr.found_crash():
         l.info("found crash for \"%s\"", binary)
 
-        sql = 'update binarys SET status=3 WHERE binary_name = %s' % binary
+        sql = 'update binarys SET status=3 WHERE binary_name = "%s"' % binary
+	print sql
         db.execute(sql)
 
         # publish the crash
@@ -208,7 +209,7 @@ def fuzz(binary):
     if fzr.timed_out():
         l.info("timed out while fuzzing \"%s\"", binary)
 
-        sql = 'update binarys SET status=-1 WHERE binary_name = %s' % binary
+        sql = 'update binarys SET status=-1 WHERE binary_name = "%s"' % binary
         db.execute(sql)
 
 

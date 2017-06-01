@@ -66,9 +66,8 @@ class Defect_Mining_Binary_Delete_Handler(WiseHandler):
         output_path = os.path.join(os.path.dirname(__file__), '../../output/%s' % binary_name)
         if(os.path.exists(filepath)):
             os.remove(filepath)
-        if(os.path.exists(output_path)):
-            os.rmdir(output_path)
-        self.write('finished!')
+        subprocess.Popen('rm -rf %s' % output_path, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+	self.write('finished!')
 
 class Defect_Mining_Binary_Upload_Handler(WiseHandler):
     def post(self):
